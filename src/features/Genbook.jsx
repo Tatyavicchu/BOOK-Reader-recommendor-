@@ -3,18 +3,49 @@ import ExtractedText from './ExtractedText';
 
 function Genbook() {
   const genres = [
-    '21st-century', 'history', 'roman', 'classics', 'religion', 'novels', 'philosophy',
-    'fiction', 'literature', 'short-stories', 'politics', 'non-fiction', 'read-for-school',
-    'poetry', 'historical', 'humor', 'horror', 'mystery', 'science-fiction', 'fantasy',
-    'paranormal', '20th-century', 'adult', 'speculative-fiction', 'supernatural',
-    'dark', 'literary-fiction', 'biography', 'family', 'mythology', 'historical-fiction',
-    'college', 'contemporary', 'high-school', 'essays', 'school', 'memoir', 'coming-of-age',
-    'crime', 'suspense', 'mystery-thriller', 'unfinished', 'travel', 'science', 'theology',
-    'american', 'christian', 'cookbooks', 'relationships', 'graphic-novels', 'vampires',
-    'thriller', 'picture-books', 'action', 'magic', 'urban-fantasy', 'paranormal-romance',
-    'spirituality', 'psychology', 'writing', 'dystopia', 'drama', 'business', 'chick-lit',
-    'childrens', 'young-adult', 'new-adult', 'war', 'plays', 'sociology', 'amazon'
-  ];
+    "Fiction",
+    "Romance",
+    "Fantasy",
+    "Mystery",
+    "Science Fiction",
+    "Thriller",
+    "Horror",
+    "Historical Fiction",
+    "Crime Fiction",
+    "Young Adult Literature",
+    "Adventure",
+    "Biography",
+    "Autobiography",
+    "Comedy",
+    "Drama",
+    "Poetry",
+    "Spirituality",
+    "Psychology",
+    "Science",
+    "History",
+    "Travel",
+    "Suspense",
+    "Detective Fiction",
+    "Historical Romance",
+    "Paranormal Romance",
+    "Contemporary Fantasy",
+    "High Fantasy",
+    "Dark Fantasy",
+    "Urban Fantasy",
+    "Dystopia",
+    "Utopian and Dystopian Fiction",
+    "True Crime",
+    "Graphic Novel",
+    "Science Fantasy",
+    "Short Story",
+    "Gothic Fiction",
+    "Military Science Fiction",
+    "Social Science Fiction",
+    "Inspirational",
+    "Coming of Age"
+]
+
+
 
   const [selectedGenres, setSelectedGenres] = useState([]);
   const [bookName, setBookName] = useState('');
@@ -80,8 +111,8 @@ function Genbook() {
   return (
     <div className="flex-col justify-center items-center p-4">
       <h2 className="text-xl font-bold">Filter by Genre</h2>
-      <div className="grid grid-cols-3 gap-2 mb-4">
-        {(showAllGenres ? genres : genres.slice(0, 10)).map((genre) => (
+      <div className="grid grid-cols-4 gap-2  mb-4">
+        {(showAllGenres ? genres : genres.slice(0,8)).map((genre) => (
           <label key={genre} className="flex items-center space-x-2">
             <input
               type="checkbox"
@@ -117,12 +148,12 @@ function Genbook() {
       {/* RECOMMENDED BOOKS */}
       {!selectedBook && (
         <div className="mt-6">
-        <h3 className="text-xl font-bold">Recommended Books</h3>
+        <h3 className="text-2xl font-bold">Recommended Books</h3>
         <div className='flex-row'>
         <ul>
           {recommendedBooks.map((book, index) => (
             <li key={index} className="my-2 cursor-pointer" onClick={() => fetchBookText(book)}>
-              <p><strong>Title:</strong> {book.title}</p>
+              <p className='font-semibold text-xl'><strong>Title:</strong> {book.title}</p>
               <p><strong>Genre:</strong> {book.genres}</p>
             </li>
           ))}
